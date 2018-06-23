@@ -7,11 +7,11 @@
                     var tmp = array[j];
                     array[j] = array[j + 1];
                     array[j + 1] = tmp;
-                    return array;
+                    this.lines = _.clone(array);
                 }
             }
         }
-        return array;
+        this.lines = _.clone(array);
     }
 
     let insertsort = function (array) {
@@ -67,15 +67,16 @@
         created: function () {},
         methods: {
             sort: function () {
-                var lastList = _.clone(this.lines);
-                var newList = _.clone(sort(this.lines));
-                if (!_.isEqual(lastList, newList)) {
-                    this.lines = newList;
-                    isDone = false;
-                } else {
-                    isDone = true;
-                }
-                return isDone;
+                sort.bind(this)(this.lines)
+                // var lastList = _.clone(this.lines);
+                // var newList = _.clone(sort(this.lines));
+                // if (!_.isEqual(lastList, newList)) {
+                //     this.lines = newList;
+                //     isDone = false;
+                // } else {
+                //     isDone = true;
+                // }
+                // return isDone;
             },
             reset(){
                 this.lines = _.clone(this.originalLines);

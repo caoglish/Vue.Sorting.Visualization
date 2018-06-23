@@ -28,7 +28,8 @@
   <div class=" sort-line"  v-bind:style="'width:'+i*5+'px'"> {{i}}</li>
   </li>
 </transition-group>
-<button class="btn btn-dark" v-on:click="start" v-bind:disabled="isStarted">start</button>
+<!-- <button class="btn btn-dark" v-on:click="start" v-bind:disabled="isStarted">start</button> -->
+<button class="btn btn-dark" v-on:click="sort">sort</button>
 <button class="btn btn-dark" v-on:click="reset" v-bind:disabled="isStarted">reset</button>
 <button class="btn btn-dark" v-on:click="setSortAlgorithm('bublesort')" v-bind:disabled="isStarted">bublesort</button>
 <button class="btn btn-dark" v-on:click="setSortAlgorithm('insertsort')" v-bind:disabled="isStarted">insertsort</button>
