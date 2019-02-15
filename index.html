@@ -19,27 +19,36 @@
 
 <body>
   <div id="app" class="container">
-
+	
 
     <!-- Add your site or application content here -->
-    <p>{{message}}</p>
-    <transition-group name="flip-list" tag="ul" v-show="isShowApp">
-      <li class="row" v-for="i in lines" v-bind:key="i">
-        <div class=" sort-line" v-bind:style="'width:'+i*5+'px'"> {{i}}</li>
-      </li>
-    </transition-group>
-    <!-- <button class="btn btn-dark" v-on:click="start" v-bind:disabled="isStarted">start</button> -->
-    <button class="btn btn-dark" v-on:click="sort" v-bind:disabled="!isDone">sort</button>
-    <button class="btn btn-dark" v-on:click="reset" v-bind:disabled="!isDone">reset</button>
-    <button class="btn btn-dark" v-on:click="setSortAlgorithm('bublesort')" v-bind:disabled="!isDone">bublesort</button>
-    <button class="btn btn-dark" v-on:click="setSortAlgorithm('insertsort')" v-bind:disabled="!isDone">insertsort</button>
-    <button class="btn btn-dark" v-on:click="setSortAlgorithm('selectionsort')" v-bind:disabled="!isDone">selectionsort</button>
-    <button class="btn btn-dark" v-on:click="resetData()" v-bind:disabled="!isDone">reset Data</button>
 
+ 	<button class="btn btn-dark" v-on:click="resetData" v-bind:disabled="!isDone">Reset Data</button>
+ 	<button class="btn btn-dark" v-on:click="sort" v-bind:disabled="!isDone">Sort All</button>
+	<div class="row">
+	<visual-sort type='bublesort'></visual-sort>
+	<visual-sort type='insertsort'></visual-sort>
+	<visual-sort type='selectionsort'></visual-sort>
+
+    </div>
     </div>
 
 
-
+	<template id='visual-sort-template'>
+	<div class='col-5'>
+		<p>{{message}}</p> <h1> {{type}}</h1>
+		<transition-group name="flip-list" tag="ul" v-show="isShowApp">
+		<li class="row" v-for="i in lines" v-bind:key="i">
+			<div class=" sort-line" v-bind:style="'width:'+i*3+'px'"> {{i}}</li>
+		</li>
+		</transition-group>
+		<!-- <button class="btn btn-dark" v-on:click="start" v-bind:disabled="isStarted">start</button> -->
+		<button class="btn btn-dark" v-on:click="sort" v-bind:disabled="!isDone">sort</button>
+		<button class="btn btn-dark" v-on:click="reset" v-bind:disabled="!isDone">reset</button>
+		
+	</div>
+		
+	</template>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js" integrity="sha256-VKITM616rVzV+MI3kZMNUDoY5uTsuSl1ZvEeZhNoJVk="
       crossorigin="anonymous"></script>
