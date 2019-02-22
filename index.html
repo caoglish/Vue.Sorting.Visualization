@@ -35,11 +35,11 @@
 
 
 	<template id='visual-sort-template'>
-	<div class='col-5'>
-		<p>{{message}}</p> <h1> {{type}}</h1>
+	<div class='col-4'>
+		<h1> {{type}}</h1>
 		<transition-group name="flip-list" tag="ul" v-show="isShowApp">
-		<li class="row" v-for="i in lines" v-bind:key="i">
-			<div class=" sort-line" v-bind:style="'width:'+i*3+'px'"> {{i}}</li>
+		<li class="row" v-for="(i,index) in lines" v-bind:key="i">
+			<div class=" sort-line" v-bind:style="'width:'+i+'%;background-color:'+(index==highlight?'orange':index===currentPosition?'red':'black')" > </li>
 		</li>
 		</transition-group>
 		<!-- <button class="btn btn-dark" v-on:click="start" v-bind:disabled="isStarted">start</button> -->
